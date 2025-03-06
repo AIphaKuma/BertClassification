@@ -20,3 +20,5 @@ L'application est accessible via une **interface web** grâce à Flask.
 Assure-toi d’avoir **Python 3.12+**, puis installe les bibliothèques requises :
 ```bash
 pip install -r requirements.txt
+python training/train_distillbert.py
+python app.py
