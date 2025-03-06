@@ -3,3 +3,9 @@ transformers
 datasets
 flask
 pyyaml
+scikit-learn
+pandas
+numpy
+accelerate
+sentencepiece
+evaluate
