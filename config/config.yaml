@@ -1,0 +1,29 @@
+# 📝 Configuration globale du projet
+task: "classification"  # On entraîne un modèle de classification pour QA sur les capitales
+
+# 📌 Modèle utilisé
+model_name: "distilbert-base-uncased"  # Utilisation d'un modèle léger
+tokenizer_type: "bert"
+
+# 🔥 Hyperparamètres du modèle
+learning_rate: 0.00003  # Un learning rate un peu plus bas
+num_epochs: 15  # Augmenter le nombre d'époques
+batch_size: 16  # Augmenter la stabilité
+seq_length: 50  # Longueur des séquences d'entrée max
+max_seq_len: 512  # Taille maximale des tokens d'entrée
+
+# 📂 Données
+dataset_name: "data/dataset_bert.csv"  # Dataset CSV contenant les questions et les capitales
+train_split: 0.8  # 80% des données pour l'entraînement
+val_split: 0.2  # 20% pour la validation
+
+# 🔄 Chemins de sauvegarde
+model_save_path: "models/distilbert-capital-classification"
+tokenizer_save_path: "models/tokenizer_distilbert"
+dataset_save_path: "data/processed_dataset.csv"  # Si on veut pré-traiter le dataset avant l'entraînement
+
+# 🎛️ Paramètres de génération (si utilisé en inference)
+generation_length: 100
+temperature: 0.8
+top_k: 10
+top_p: 0.9

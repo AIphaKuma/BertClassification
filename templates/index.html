@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA sur les Capitales</title>
+    <style>
+        /* 🌑 Thème sobre et moderne */
+        body {
+            background-color: #1c1c1c; /* Fond gris foncé */
+            color: #e0e0e0; /* Texte gris clair */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #dcdcdc; /* Blanc légèrement adouci */
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* 📦 Conteneur principal */
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #252525; /* Fond gris foncé mais pas trop noir */
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.1);
+        }
+
+        label {
+            font-size: 16px;
+            color: #b0b0b0;
+        }
+
+        /* 📜 Champ de texte */
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        /* 🎛️ Bouton */
+        button {
+            background-color: #444; /* Gris moyen */
+            color: white;
+            font-size: 16px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #5a5a5a; /* Un gris plus clair au survol */
+        }
+
+        /* 📝 Zone de réponse */
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #333;
+            border-radius: 5px;
+            min-height: 40px;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* 🚀 Animation quand la réponse apparaît */
+        #result.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>QA sur les Capitales</h1>
+
+    <div class="container">
+        <form id="qaForm">
+            <label for="question">Posez une question :</label><br>
+            <input type="text" id="question" name="question" placeholder="Ex : Quelle est la capitale du Japon ?"><br><br>
+            <button type="submit">Obtenir la réponse</button>
+        </form>
+
+        <h2>Réponse :</h2>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("qaForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            let response = await fetch("/qa", {
+                method: "POST",
+                body: formData
+            });
+            let data = await response.json();
+
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerText = data.answer;
+            resultDiv.classList.add("show");  // 🚀 Applique l'animation
+        });
+    </script>
+
+</body>
+</html>

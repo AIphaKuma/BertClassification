@@ -1,0 +1,10 @@
+Paris est la capitale de la France.
+Tokyo est la capitale du Japon.
+New York n'est pas une capitale, mais Washington est la capitale des États-Unis.
+Berlin est la capitale de l'Allemagne.
+Madrid est la capitale de l'Espagne.
+Pékin est la capitale de la Chine.
+Ottawa est la capitale du Canada.
+Brasilia est la capitale du Brésil.
+Moscou est la capitale de la Russie.
+New Delhi est la capitale de l'Inde.
